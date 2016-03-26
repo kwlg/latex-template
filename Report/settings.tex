@@ -1,3 +1,69 @@
+% !TEX encoding = UTF-8 Unicode
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+\usepackage[british]{babel}
+\usepackage{tocloft}                    % Better table of contents
+\usepackage[headheight=35pt]{geometry}  % Page geometry
+\usepackage{graphicx,
+            epstopdf,
+            float,
+            subcaption}                 % Figures
+\usepackage[section]{placeins}          % Gives \FloatBarrier
+\usepackage{amsmath,
+            amssymb,
+            amsthm,
+            amsfonts,
+            mathrsfs,
+            dsfont,
+            esint,
+            mathtools,
+            tensor,
+            thmtools}                     % Mathematics
+\usepackage{physics,
+            siunitx}                    % Physics
+\usepackage{enumerate}                  % Lists
+\usepackage{fancyhdr}                   % Header and footer
+\usepackage{booktabs,
+            multirow}                   % Tables
+\usepackage{appendix}                   % Appendices
+\usepackage{hyperref}                   % Links
+\usepackage[capitalise,
+            noabbrev]{cleveref}         % Automatic references
+\usepackage{csquotes}                   % Quotes. For biblatex
+\usepackage{color}                      % Colour
+\usepackage{pdflscape}                  % Rotate the whole document
+\usepackage{multicol}                   % Multiple columns on one page
+\usepackage{pgfplots}                   % Create figures
+\usepackage{lmodern}                    % More options for fonts
+\usepackage{newfloat}                   % For minted
+\usepackage{parskip}			% Begin on new row
+%\usepackage[newfloat]{minted}          % Insert code
+%\usepackage[backend=biber,
+%           style=ieee,
+%           language=auto,
+%           sortcites=true,
+%           url=true,
+%           hyperref=true]{biblatex}
+
+%%%%%%%%%%%
+% Counters efter section
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\makeatletter
+    \newtoggle{biblatexloaded}
+    \newtoggle{mintedloaded}
+    \@ifpackageloaded{biblatex}{\toggletrue{biblatexloaded}}{\togglefalse{biblatexloaded}}
+    \@ifpackageloaded{minted}{\toggletrue{mintedloaded}}{\togglefalse{mintedloaded}}
+\makeatother
+
+\iftoggle{biblatexloaded}{
+    \addbibresource{refs.bib}       % File with bibliography database
+}
+
+
 %% Cleveref
 \crefname{listing}{Code}{Codes} % Match with minted caption
 
@@ -156,3 +222,70 @@
 
 % Folder with figures
 \graphicspath{./figs/}
+
+
+
+
+
+% Jespers settings
+
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\renewcommand{\emptyset}{\varnothing}
+
+\declaretheoremstyle[%
+    spaceabove = 6pt,
+    spacebelow = 6pt,
+    headfont = \bfseries,
+    bodyfont = \itshape,
+]{sats}
+
+\declaretheoremstyle[%
+    spaceabove = 6pt,
+    spacebelow = 6pt,
+    headfont = \bfseries,
+    bodyfont = \normalfont,
+]{def}
+
+\declaretheoremstyle[%
+    spaceabove = 6pt,
+    spacebelow = 6pt,
+    headfont = \itshape,
+    bodyfont = \normalfont,
+]{anm}
+
+\theoremstyle{sats}
+\newtheorem{sats}{Sats}
+\newtheorem{lemma}[sats]{Lemma}
+\newtheorem{prop}[sats]{Proposition}
+\newtheorem{foljdsats}[sats]{Följdsats}
+\theoremstyle{def}
+\newtheorem{definition}[sats]{Definition}
+\newtheorem{exempel}[sats]{Exempel}
+\theoremstyle{anm}
+\newtheorem{anm}{Anmärkning}
+\newtheorem*{anm*}{Anmärkning}
+
+\DeclareMathOperator{\vol}{Vol}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\supp}{supp}
+
+\newcommand{\REP}[1]{\mbox{$\mathbb{R}^{#1}$}}
+\newcommand{\RE}{\mbox{$\mathbb{R}$}}
+\newcommand{\NA}{\mbox{$\mathbb{N}$}}
+\newcommand{\Q}{\mbox{$\mathbb{Q}$}}
+\newcommand{\CEP}[1]{\mbox{$\mathbb{C}^{#1}$}}
+\newcommand{\C}{\mbox{$\mathbb{C}$}}
+\newcommand{\N}{\mbox{$\mathbb{N}$}}
+\newcommand{\A}{\mbox{$\mathscr{A}$}}
+\newcommand{\Cs}{\mbox{$\mathscr{C}$}}
+\newcommand{\F}{\mbox{$\mathscr{F}$}}
+\newcommand{\B}{\mbox{$\mathscr{B}$}}
+\newcommand{\M}{\mbox{$\mathscr{M}$}}
+\newcommand{\K}{\mbox{$\mathscr{K}$}}
+\newcommand{\E}{\mbox{$\mathscr{E}$}}
+\renewcommand{\L}{\mbox{$\mathscr{L}$}}
+\newcommand{\Hs}{\mbox{$\mathscr{H}$}}
+\renewcommand{\P}{\mbox{$\mathscr{P}$}}
+\newcommand{\epr}{\begin{flushright}\mbox{$\square$}\end{flushright}}
+\newcommand{\e}{\mbox{$\mathrm{e}$}}
